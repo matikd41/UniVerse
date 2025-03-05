@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Social Media</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+        }
+        .post-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .post {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>School Social Media - Wallboard</h1>
+    <div class="post-box">
+        <input type="text" id="postInput" placeholder="What's on your mind?">
+        <button onclick="addPost()">Post</button>
+    </div>
+    <div id="postFeed"></div>
+    
+    <script>
+        function addPost() {
+            var input = document.getElementById("postInput");
+            var text = input.value.trim();
+            if (text) {
+                var postFeed = document.getElementById("postFeed");
+                var newPost = document.createElement("div");
+                newPost.className = "post";
+                newPost.innerHTML = "<strong>You:</strong> " + text;
+                postFeed.prepend(newPost);
+                input.value = "";
+            }
+        }
+    </script>
+</body>
+</html>
