@@ -30,14 +30,27 @@
 .content-left {
 	display: inline-block;
 	width: 60%;
+}
+
+.new-post {
+	background: #fff;
+	border-radius: 10px;
+	box-shadow: 0 0 5px #ddd;
+	padding: 10px;
+}
+
+.post {
 	background: #fff;
 	border-radius: 10px;
 	box-shadow: 0 0 5px #ddd;
 }
-
 .content-right {
 	display: inline-block;
 	width: 35%;
+}
+
+.user-info {
+	padding: 10px;
 	background: #fff;
 	border-radius: 10px;
 	box-shadow: 0 0 5px #ddd;
