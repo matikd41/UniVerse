@@ -1,0 +1,13 @@
+.container {
+	display: block;
+	background: #fff;
+	border-radius: 10px;
+	padding: 20px;
+}
+
+.item {
+	margin: 5px;
+}
+#dom {
+	width: 30px;
+}
