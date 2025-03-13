@@ -1,29 +1,44 @@
-@import "https://www.nerdfonts.com/assets/css/webfont.css";
 body {
-	font-family: "Helvetica", "Arial", sans-serif;
-	background: #f1f1f1;
-	color: black;
-	width: 100%;
-	height: 100%;
-	padding: 0;
-	margin: 0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    text-align: center;
 }
 
-.ouText {
-	color: #B59A57;
+header {
+    background: #004080;
+    color: white;
+    padding: 20px;
+    font-size: 24px;
 }
+
+nav {
+    background: #003366;
+    padding: 10px;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
 .container {
-	margin:auto;
-	width: 80%;
-	max-width: 1080px;
+    margin: 50px auto;
+    max-width: 800px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.header {
-	background: #fff;
-	padding: 20px;
-	height: 40px;
-}
-
-.footer {
-
+footer {
+    background: #004080;
+    color: white;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
