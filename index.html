@@ -60,16 +60,17 @@
       max-width: 600px;
       margin: 0 auto 60px;
       padding: 20px;
-      background: #fff;
+      background: #ffffff;
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      text-align: left;
+      max-height: 500px;
+      overflow-y: auto;
     }
 
     .discussion-post {
       font-size: 18px;
       color: #333;
-      padding: 20px;
+      padding: 15px 20px;
       background: #f9f9f9;
       border-left: 5px solid #caa437;
       border-radius: 8px;
@@ -79,17 +80,25 @@
       animation: fadeInUp 0.6s ease-in-out forwards;
     }
 
+    .author {
+      font-size: 14px;
+      color: #777;
+      margin-top: 10px;
+    }
+
+    .actions {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #555;
+      display: flex;
+      gap: 20px;
+    }
+
     @keyframes fadeInUp {
       to {
         opacity: 1;
         transform: translateY(0);
       }
-    }
-
-    .author {
-      font-size: 14px;
-      color: #777;
-      margin-top: 10px;
     }
 
     @media (max-width: 600px) {
@@ -116,13 +125,8 @@
     <p>Connecting students to opportunities, one step at a time.</p>
   </div>
 
-  
-  
-  
-  
-  
   <div class="discussion-section" id="discussionBoard">
-    <!-- Random discussion post will appear here -->
+    <!-- Fake posts will be injected here -->
   </div>
 
   <script>
@@ -139,37 +143,50 @@
       { message: "Student Org Fair had some awesome clubs! Join something!", author: "Student J, Leadership Club" }
     ];
 
-    let currentPostIndex = -1;
-
-    function showNextPost() {
-      const board = document.getElementById('discussionBoard');
-      board.innerHTML = ''; // Clear previous
-
-      let newIndex;
-      do {
-        newIndex = Math.floor(Math.random() * posts.length);
-      } while (newIndex === currentPostIndex);
-
-      currentPostIndex = newIndex;
-      const post = posts[newIndex];
-
-      const postEl = document.createElement('div');
-      postEl.className = 'discussion-post';
-      postEl.innerHTML = `
-        ${post.message}
-        <div class="author">— ${post.author}</div>
-      `;
-
-      board.appendChild(postEl);
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    // Initial post
-    showNextPost();
+    function createPost(postData) {
+      const postEl = document.createElement('div');
+      postEl.className = 'discussion-post';
+      const likes = getRandomInt(5, 150);
+      const comments = getRandomInt(0, 30);
 
-    // Rotate every 5 seconds
-    setInterval(showNextPost, 5000);
+      postEl.innerHTML = `
+        ${postData.message}
+        <div class="author">— ${postData.author}</div>
+        <div class="actions">
+          ❤️ ${likes} Likes
+          💬 ${comments} Comments
+        </div>
+      `;
+      return postEl;
+    }
+
+    function loadDiscussionBoard() {
+      const board = document.getElementById('discussionBoard');
+
+      const randomPost = posts[Math.floor(Math.random() * posts.length)];
+      const postElement = createPost(randomPost);
+
+      board.appendChild(postElement);
+
+      // Limit to last 10 posts
+      if (board.children.length > 10) {
+        board.removeChild(board.children[0]);
+      }
+
+      // Auto scroll to bottom
+      board.scrollTop = board.scrollHeight;
+    }
+
+    // Initial 3 posts
+    for (let i = 0; i < 3; i++) loadDiscussionBoard();
+
+    // Add a new one every 4 seconds
+    setInterval(loadDiscussionBoard, 4000);
   </script>
 
 </body>
 </html>
-
