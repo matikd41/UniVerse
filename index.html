@@ -1,68 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UniVerse - Welcome</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UniVerse - Welcome</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
 
-        .header {
-            background-color: #000000; /* Oakland Black */
-            color: #caa437; /* Oakland Gold */
-            padding: 30px 20px;
-            font-size: 32px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
+    .header {
+      background-color: #000000;
+      color: #caa437;
+      padding: 30px 20px;
+      font-size: 32px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
 
-        .nav {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            margin: 40px 20px;
-        }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 40px 20px;
+    }
 
-        .nav a {
-            text-decoration: none;
-            background-color: #ffffff;
-            color: #000000;
-            padding: 15px 25px;
-            border-radius: 12px;
-            border: 2px solid #caa437;
-            font-size: 18px;
-            transition: 0.3s ease;
-            min-width: 180px;
-            text-align: center;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-        }
+    .nav a {
+      text-decoration: none;
+      background-color: #ffffff;
+      color: #000000;
+      padding: 15px 25px;
+      border-radius: 12px;
+      border: 2px solid #caa437;
+      font-size: 18px;
+      transition: 0.3s ease;
+      min-width: 180px;
+      text-align: center;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
 
-        .nav a:hover {
-            background-color: #caa437;
-            color: #ffffff;
-            transform: translateY(-3px);
-        }
+    .nav a:hover {
+      background-color: #caa437;
+      color: #ffffff;
+      transform: translateY(-3px);
+    }
 
-        .content {
-            text-align: center;
-            font-size: 22px;
-            margin: 60px 20px;
-            color: #333;
-        }
+    .content {
+      text-align: center;
+      font-size: 22px;
+      margin: 40px 20px;
+      color: #333;
+    }
 
-        @media (max-width: 600px) {
-            .nav {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-    </style>
+    .discussion-section {
+      max-width: 600px;
+      margin: 0 auto 60px;
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+
+    .discussion-post {
+      font-size: 18px;
+      color: #333;
+      padding: 20px;
+      background: #f9f9f9;
+      border-left: 5px solid #caa437;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease-in-out forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .author {
+      font-size: 14px;
+      color: #777;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 600px) {
+      .nav {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -84,3 +120,54 @@
      </div>
  </body>
  </html>
+ <div class="discussion-section" id="discussionBoard">
+    <!-- Random discussion post will appear here -->
+  </div>
+
+  <script>
+    const posts = [
+      { message: "Is anyone else drowning in midterms? Good luck everyone!", author: "Student A, OU" },
+      { message: "Tip: Kresge Library’s 3rd floor is the quietest. Best for focus.", author: "Student B, Psychology" },
+      { message: "Golden Grizzlies game tonight at 7PM! Who’s going?", author: "Student C, Athletics Fan" },
+      { message: "Just found out tutoring is free on campus. Bless.", author: "Student D, Engineering" },
+      { message: "Career fair prep tip: Practice your pitch in front of a mirror.", author: "Student E, Business" },
+      { message: "Free coffee in the Oakland Center on Fridays? Yes please ☕", author: "Student F, Chill Club" },
+      { message: "Mental Health Week has yoga and therapy dogs — it’s a vibe.", author: "Student G, Wellness Team" },
+      { message: "Group study for BIO 1200 this weekend? Let’s form a squad.", author: "Student H, Pre-Med" },
+      { message: "Can we talk about how hard parking is after 10AM? 😩", author: "Student I, Relatable Commuter" },
+      { message: "Student Org Fair had some awesome clubs! Join something!", author: "Student J, Leadership Club" }
+    ];
+
+    let currentPostIndex = -1;
+
+    function showNextPost() {
+      const board = document.getElementById('discussionBoard');
+      board.innerHTML = ''; // Clear previous
+
+      let newIndex;
+      do {
+        newIndex = Math.floor(Math.random() * posts.length);
+      } while (newIndex === currentPostIndex);
+
+      currentPostIndex = newIndex;
+      const post = posts[newIndex];
+
+      const postEl = document.createElement('div');
+      postEl.className = 'discussion-post';
+      postEl.innerHTML = `
+        ${post.message}
+        <div class="author">— ${post.author}</div>
+      `;
+
+      board.appendChild(postEl);
+    }
+
+    // Initial post
+    showNextPost();
+
+    // Rotate every 5 seconds
+    setInterval(showNextPost, 5000);
+  </script>
+
+</body>
+</html>
