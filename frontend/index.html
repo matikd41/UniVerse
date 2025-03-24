@@ -3,134 +3,210 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>UniVerse Internship & Career Hub</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>UniVerse - Welcome</title>
   <style>
     body {
-      font-family: 'Arial', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
       margin: 0;
       padding: 0;
-      background-color: #246bcf;
+    }
+
+    .header {
+      background-color: #000000;
+      color: #caa437;
+      padding: 30px 20px;
+      font-size: 32px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 40px 20px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      background-color: #ffffff;
+      color: #000000;
+      padding: 15px 25px;
+      border-radius: 12px;
+      border: 2px solid #caa437;
+      font-size: 18px;
+      transition: 0.3s ease;
+      min-width: 180px;
+      text-align: center;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav a:hover {
+      background-color: #caa437;
+      color: #ffffff;
+      transform: translateY(-3px);
+    }
+
+    .content {
+      text-align: center;
+      font-size: 22px;
+      margin: 40px 20px;
       color: #333;
     }
-    header {
-      background: #b59b68;
-      color: white;
+
+    .discussion-section {
+      max-width: 600px;
+      margin: 0 auto 60px;
       padding: 20px;
-      text-align: center;
-      font-size: 1.5em;
-    }
-    nav ul {
-      list-style: none;
-      padding: 0;
-      text-align: center;
-    }
-    nav ul li {
-      display: inline;
-      margin: 0 20px;
-    }
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.2em;
-    }
-    #hero {
-      text-align: center;
-      padding: 60px;
-      background: url('oakland-university-bg.jpg') no-repeat center center/cover;
-      color: white;
-    }
-    .btn {
-      display: inline-block;
-      padding: 12px 25px;
-      background: #a58d4f;
-      color: white;
-      text-decoration: none;
-      font-size: 1.2em;
-      border-radius: 8px;
-    }
-    section {
-      padding: 30px;
-      background: white;
-      margin: 30px;
+      background: #ffffff;
       border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      max-height: 500px;
+      overflow-y: auto;
     }
-    .job-listing {
-      background: #f7e8c7;
-      padding: 20px;
-      margin: 15px 0;
+
+    .discussion-post {
+      font-size: 18px;
+      color: #333;
+      padding: 15px 20px;
+      background: #f9f9f9;
+      border-left: 5px solid #caa437;
       border-radius: 8px;
+      margin-bottom: 15px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease-in-out forwards;
     }
-    .apply-btn {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 10px 20px;
-      background: #735f3d;
-      color: white;
-      text-decoration: none;
-      font-size: 1em;
-      border-radius: 6px;
+
+    .author {
+      font-size: 14px;
+      color: #777;
+      margin-top: 10px;
     }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #b59b68;
-      color: white;
-      font-size: 1.1em;
+
+    .actions {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #555;
+      display: flex;
+      gap: 20px;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Oakland University Internship & Career Hub</h1>
-    <nav>
-      <ul>
-        <li><a href="#internships">Internships</a></li>
-        <li><a href="#careers">Careers</a></li>
-        <li><a href="#resources">Resources</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <section id="hero">
-    <h2>Find Your Dream Internship or Job</h2>
-    <p>Browse the latest opportunities and get career guidance tailored for Oakland University students.</p>
-    <a href="#internships" class="btn">Explore Internships</a>
-  </section>
+  <div class="header">Welcome to UniVerse</div>
 
-  <section id="internships">
-    <h2>Latest Internship Listings</h2>
-    <div class="job-listing">
-      <h3>Software Development Intern</h3>
-      <p>Company: Tech Innovators | Location: Rochester Hills, MI | Deadline: April 15, 2025</p>
-      <a href="#apply" class="apply-btn">Apply Now</a>
-    </div>
-    <div class="job-listing">
-      <h3>Marketing Intern</h3>
-      <p>Company: Creative Minds | Location: Detroit, MI | Deadline: March 30, 2025</p>
-      <a href="#apply" class="apply-btn">Apply Now</a>
-    </div>
-  </section>
+  <div class="nav">
+    <a href="loginPage.html">Login Page</a>
+    <a href="general-posts.html">Discussion Posts</a>
+    <a href="rateaprofessor.html">Professor Rating</a>
+    <a href="profile.html">Profile Page</a>
+    <a href="Internpage.html">Intern Page</a>
+  </div>
 
-  <section id="careers">
-    <h2>Full-Time Career Opportunities</h2>
-    <div class="job-listing">
-      <h3>Data Analyst</h3>
-      <p>Company: DataCorp | Location: Ann Arbor, MI | Deadline: May 10, 2025</p>
-      <a href="#apply" class="apply-btn">Apply Now</a>
-    </div>
-  </section>
+  <div class="content">
+    <p>Connecting students to opportunities, one step at a time.</p>
+  </div>
 
-  <section id="resources">
-    <h2>Career Resources</h2>
-    <p>Access resume templates, interview tips, and networking advice to boost your career.</p>
-  </section>
+  <div class="discussion-section" id="discussionBoard">
+    <!-- Fake posts will be injected here -->
+  </div>
 
-  <footer>
-    <p>&copy; 2025 Oakland University Internship & Career Hub. All Rights Reserved.</p>
-  </footer>
+  <script>
+    const posts = [
+      { message: "Is anyone else drowning in midterms? Good luck everyone!", author: "Student A, OU" },
+      { message: "Tip: Kresge Library’s 3rd floor is the quietest. Best for focus.", author: "Student B, Psychology" },
+      { message: "Golden Grizzlies game tonight at 7PM! Who’s going?", author: "Student C, Athletics Fan" },
+      { message: "Just found out tutoring is free on campus. Bless.", author: "Student D, Engineering" },
+      { message: "Career fair prep tip: Practice your pitch in front of a mirror.", author: "Student E, Business" },
+      { message: "Free coffee in the Oakland Center on Fridays? Yes please ☕", author: "Student F, Chill Club" },
+      { message: "Mental Health Week has yoga and therapy dogs — it’s a vibe.", author: "Student G, Wellness Team" },
+      { message: "Group study for BIO 1200 this weekend? Let’s form a squad.", author: "Student H, Pre-Med" },
+      { message: "Can we talk about how hard parking is after 10AM? 😩", author: "Student I, Relatable Commuter" },
+      { message: "Student Org Fair had some awesome clubs! Join something!", author: "Student J, Leadership Club" }
+    ];
+
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function createPost(postData) {
+      const postEl = document.createElement('div');
+      postEl.className = 'discussion-post';
+      const likes = getRandomInt(5, 150);
+      const comments = getRandomInt(0, 30);
+
+      postEl.innerHTML = 
+        ${postData.message}
+        <div class="author">— ${postData.author}</div>
+        <div class="actions">
+          ❤️ ${likes} Likes
+          💬 ${comments} Comments
+        </div>
+      ;
+      return postEl;
+    }
+
+    function loadDiscussionBoard() {
+      const board = document.getElementById('discussionBoard');
+
+      const randomPost = posts[Math.floor(Math.random() * posts.length)];
+      const postElement = createPost(randomPost);
+
+      board.appendChild(postElement);
+
+      // Limit to last 10 posts
+      if (board.children.length > 10) {
+        board.removeChild(board.children[0]);
+      }
+
+      // Auto scroll to bottom
+      board.scrollTop = board.scrollHeight;
+    }
+
+    // Initial 3 posts
+    for (let i = 0; i < 3; i++) loadDiscussionBoard();
+
+    // Add a new one every 4 seconds
+    setInterval(loadDiscussionBoard, 4000);
+    <script>
+    fetch('http://localhost:3000/api/internships')
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById("internships");
+
+            data.forEach(job => {
+                const jobDiv = document.createElement("div");
+                jobDiv.className = "job-listing";
+                jobDiv.innerHTML = 
+                    <h3>${job.title}</h3>
+                    <p>Company: ${job.company} | Location: ${job.location} | Deadline: ${job.deadline}</p>
+                    <a href="#apply" class="apply-btn">Apply Now</a>
+                ;
+                container.appendChild(jobDiv);
+            });
+        })
+        .catch(error => {
+            console.error("Error loading internships:", error);
+        });
+</script>
+
 </body>
 </html>
