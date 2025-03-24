@@ -154,7 +154,6 @@
   <!-- Internships Section -->
   <div id="internships">
     <h2>Latest Internship Listings</h2>
-    <!-- Loaded from backend -->
   </div>
 
   <!-- Discussion Board Section -->
@@ -218,9 +217,17 @@
 
   <!-- Internship Fetch Script -->
   <script>
+    console.log("Fetching internships...");
+
     fetch('http://localhost:3000/api/internships')
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("HTTP status " + response.status);
+        }
+        return response.json();
+      })
       .then(data => {
+        console.log("Data received:", data);
         const container = document.getElementById("internships");
 
         data.forEach(job => {
