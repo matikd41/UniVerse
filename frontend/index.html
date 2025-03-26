@@ -153,14 +153,14 @@
       const likes = getRandomInt(5, 150);
       const comments = getRandomInt(0, 30);
 
-      postEl.innerHTML = 
+      postEl.innerHTML = `
         ${postData.message}
         <div class="author">— ${postData.author}</div>
         <div class="actions">
           ❤️ ${likes} Likes
           💬 ${comments} Comments
         </div>
-      ;
+      `;
       return postEl;
     }
 
@@ -186,27 +186,7 @@
 
     // Add a new one every 4 seconds
     setInterval(loadDiscussionBoard, 4000);
-    <script>
-    fetch('http://localhost:3000/api/internships')
-        .then(response => response.json())
-        .then(data => {
-            const container = document.getElementById("internships");
-
-            data.forEach(job => {
-                const jobDiv = document.createElement("div");
-                jobDiv.className = "job-listing";
-                jobDiv.innerHTML = 
-                    <h3>${job.title}</h3>
-                    <p>Company: ${job.company} | Location: ${job.location} | Deadline: ${job.deadline}</p>
-                    <a href="#apply" class="apply-btn">Apply Now</a>
-                ;
-                container.appendChild(jobDiv);
-            });
-        })
-        .catch(error => {
-            console.error("Error loading internships:", error);
-        });
-</script>
+  </script>
 
 </body>
 </html>
