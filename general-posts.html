@@ -1,64 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Social Media</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: auto;
-            padding: 20px;
-        }
-        .post-box {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        input {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        button {
-            padding: 10px 15px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .post {
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Discussion Board</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --ou-gold: #b3a369;
+      --ou-black: #000000;
+    }
+    .tab-btn.active {
+      background-color: var(--ou-black) !important;
+      color: white !important;
+    }
+  </style>
 </head>
-<body>
-    <h1>School Social Media - Wallboard</h1>
-    <div class="post-box">
-        <input type="text" id="postInput" placeholder="What's on your mind?">
-        <button onclick="addPost()">Post</button>
+
+<body class="bg-gradient-to-br from-gray-100 to-gray-300 min-h-screen font-sans">
+  <div class="max-w-6xl mx-auto p-8">
+    <h1 class="text-5xl font-extrabold text-center mb-10" style="color: var(--ou-black);">Class Discussion Board</h1>
+
+    <div class="flex justify-center space-x-4 mb-8">
+      <button onclick="showTab('class1', this)" class="tab-btn px-6 py-3 text-lg font-medium rounded-full border-2 transition duration-300" style="background-color: var(--ou-gold); color: var(--ou-black);">CSI 2440</button>
+      <button onclick="showTab('class2', this)" class="tab-btn px-6 py-3 text-lg font-medium rounded-full border-2 transition duration-300" style="background-color: var(--ou-gold); color: var(--ou-black);">MTH 1554</button>
+      <button onclick="showTab('class3', this)" class="tab-btn px-6 py-3 text-lg font-medium rounded-full border-2 transition duration-300" style="background-color: var(--ou-gold); color: var(--ou-black);">ENG 1510</button>
     </div>
-    <div id="postFeed"></div>
-    
-    <script>
-        function addPost() {
-            var input = document.getElementById("postInput");
-            var text = input.value.trim();
-            if (text) {
-                var postFeed = document.getElementById("postFeed");
-                var newPost = document.createElement("div");
-                newPost.className = "post";
-                newPost.innerHTML = "<strong>You:</strong> " + text;
-                postFeed.prepend(newPost);
-                input.value = "";
-            }
-        }
-    </script>
+
+    <div id="class1" class="tab-content bg-white p-8 rounded-2xl shadow-lg">
+      <h2 class="text-3xl font-semibold mb-6" style="color: var(--ou-black);">CSI 2440 Discussions</h2>
+      <textarea id="input-class1" class="w-full p-4 border-2 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-yellow-600" rows="4" placeholder="Start a discussion..."></textarea>
+      <button onclick="postMessage('class1')" class="px-6 py-3 rounded-lg text-white text-lg font-semibold shadow-md hover:shadow-lg transition" style="background-color: var(--ou-black);">Post</button>
+      <div id="messages-class1" class="mt-6 space-y-4"></div>
+    </div>
+
+    <div id="class2" class="tab-content bg-white p-8 rounded-2xl shadow-lg hidden">
+      <h2 class="text-3xl font-semibold mb-6" style="color: var(--ou-black);">MTH 1554 Discussions</h2>
+      <textarea id="input-class2" class="w-full p-4 border-2 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-yellow-600" rows="4" placeholder="Start a discussion..."></textarea>
+      <button onclick="postMessage('class2')" class="px-6 py-3 rounded-lg text-white text-lg font-semibold shadow-md hover:shadow-lg transition" style="background-color: var(--ou-black);">Post</button>
+      <div id="messages-class2" class="mt-6 space-y-4"></div>
+    </div>
+
+    <div id="class3" class="tab-content bg-white p-8 rounded-2xl shadow-lg hidden">
+      <h2 class="text-3xl font-semibold mb-6" style="color: var(--ou-black);">ENG 1510 Discussions</h2>
+      <textarea id="input-class3" class="w-full p-4 border-2 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-yellow-600" rows="4" placeholder="Start a discussion..."></textarea>
+      <button onclick="postMessage('class3')" class="px-6 py-3 rounded-lg text-white text-lg font-semibold shadow-md hover:shadow-lg transition" style="background-color: var(--ou-black);">Post</button>
+      <div id="messages-class3" class="mt-6 space-y-4"></div>
+    </div>
+  </div>
+
+  <script>
+    function showTab(tabId, el) {
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.add('hidden'));
+      document.getElementById(tabId).classList.remove('hidden');
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    function postMessage(classId) {
+      const input = document.getElementById(`input-${classId}`);
+      const container = document.getElementById(`messages-${classId}`);
+      const content = input.value.trim();
+      if (!content) return;
+
+      const timestamp = new Date().toLocaleString();
+      const message = document.createElement('div');
+      message.className = 'flex items-start space-x-4 bg-gray-100 p-4 rounded-xl shadow-sm';
+
+      message.innerHTML = `
+        <img src="https://api.dicebear.com/7.x/thumbs/svg?seed=${Math.floor(Math.random() * 1000)}" class="w-12 h-12 rounded-full" alt="avatar">
+        <div>
+          <div class="text-sm text-gray-500 mb-1">Anonymous • ${timestamp}</div>
+          <p class="text-gray-800">${content}</p>
+        </div>
+      `;
+
+      container.prepend(message);
+      input.value = '';
+    }
+
+    // Set default active tab
+    document.querySelectorAll('.tab-btn')[0].click();
+  </script>
 </body>
+
 </html>
