@@ -18,7 +18,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = firebaseConfig.auth();
+const auth = getAuth(app);
 
 document.getElementById('showSignUpForm').addEventListener('click', function() {
   document.getElementById('loginForm').style.display = 'none';
