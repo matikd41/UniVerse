@@ -1,11 +1,7 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-analytics.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Your Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyC98lyqFk43xJ4BkPUsXqUV5S-yk-jFqE8",
   authDomain: "universe-de035.firebaseapp.com",
@@ -16,9 +12,10 @@ const firebaseConfig = {
   measurementId: "G-DQMC6WDF26"
 };
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+const auth = getAuth(app); 
+
 
 document.getElementById('showSignUpForm').addEventListener('click', function() {
   document.getElementById('loginForm').style.display = 'none';
@@ -30,42 +27,43 @@ document.getElementById('showLoginForm').addEventListener('click', function() {
   document.getElementById('loginForm').style.display = 'block';
 });
 
+
 document.getElementById('loginForm').addEventListener('submit', function(event) {
-  event.preventDefault(); // Prevents the form from submitting normally
+  event.preventDefault(); 
 
   const email = document.getElementById('loginEmail').value;
   const password = document.getElementById('loginPassword').value;
 
-  auth.signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-          alert('Login successful!');
-          window.location.href = "dashboard.html"; // Redirect to a dashboard or other page
-      })
-      .catch((error) => {
-          alert('Error: ' + error.message);
-      });
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      alert('Login successful!');
+      window.location.href = "general-posts.html"; 
+    })
+    .catch((error) => {
+      alert('Error: ' + error.message);
+    });
 });
 
 
 document.getElementById('signupButton').addEventListener('click', function(event) {
-  event.preventDefault(); // Prevents the form from submitting normally
+  event.preventDefault(); 
 
   const email = document.getElementById('signupEmail').value;
   const password = document.getElementById('signupPassword').value;
   const confirmPassword = document.getElementById('signupConfirmPassword').value;
 
   if (password !== confirmPassword) {
-      alert('Passwords do not match!');
-      return;
+    alert('Passwords do not match!');
+    return;
   }
 
-
-  auth.createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-          alert('Sign-up successful!');
-          window.location.href = "dashboard.html"; // Redirect to dashboard or other page
-      })
-      .catch((error) => {
-          alert('Error: ' + error.message);
-      });
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      alert('Sign-up successful!');
+      window.location.href = "general-posts.html"; 
+    })
+    .catch((error) => {
+      alert('Error: ' + error.message);
+    });
 });
+
