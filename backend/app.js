@@ -11,7 +11,7 @@ const PORT = 3000;
 
 // Serve static files from the 'public' folder.
 // Place your HTML, CSS, and JavaScript files in this folder.
-app.use(express.static(path.join(index.html, 'public')));
+app.use(express.static(path.join(internpage.html, 'public')));
 
 // Create a connection pool to your MySQL database
 const pool = mysql.createPool({
