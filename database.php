@@ -3,7 +3,7 @@
     $db_server = "localhost";
     $db_user = "root";
     $db_pass = "";
-    $db_name = "professor_rating_db";
+    $db_name = "universe_db";
     $connection = "";
 
     try{
