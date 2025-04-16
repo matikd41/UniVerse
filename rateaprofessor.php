@@ -1,6 +1,7 @@
 <?php
 
 require_once 'database.php';
+ob_end_clean(); //removes the "You are conneceted" from the top
 
 $sql = "SELECT * FROM professorreviews"; 
 $professorreviews = $connection->query($sql);
