@@ -64,7 +64,7 @@
 <body>
     <div class="review-container">
         <h1>Add a Rating</h1>
-        <form id="reviwForm">
+        <form action="process-rating.php" method="post">
             <div class="form-group">
 
             <div class="form-group">
@@ -90,8 +90,8 @@
             </div>
 
             <div class="form-group">
-                <label for="classDifficaulty">How difficult was this class?:</label>
-                <select id="classDifficaulty" name="classDifficaulty" required>
+                <label for="classDifficulty">How difficult was this class?:</label>
+                <select id="classDifficulty" name="classDifficulty" required>
                     <option value="1"> 1 - Very Easy</option>
                     <option value="2"> 2 - Easy</option>
                     <option value="3"> 3 - Average</option>
@@ -125,8 +125,8 @@
             </div>
 
             <div class="form-group">
-                <label for="gradeRecieved">Grade Recieved:</label>
-                <select id="gradeRecieved" name="gradeRecieved" required>
+                <label for="gradeReceived">Grade Recieved:</label>
+                <select id="gradeReceived" name="gradeReceived" required>
                     <option value="A">A</option>
                     <option value="A-">A-</option>
                     <option value="B+">B+</option>
