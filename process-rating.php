@@ -30,8 +30,6 @@ if ($connection) {
 
     mysqli_stmt_close($stmt);
     mysqli_close($connection);
-} else {
-    echo "Database connection failed.";
 }
 
 ?>
