@@ -12,19 +12,14 @@ $gradYear = $_POST["gradYear"];
 $showGradYear = isset($_POST["showGradYear"]) ? filter_input(INPUT_POST, "showGradYear", FILTER_VALIDATE_BOOL): false;
 
 if ($connection) {
-	$sql = "INSERT INTO profile_meta (first_name, last_name, school, dob, dob_show, grad_year, grad_year_show) VALUES (?, ?, ?, ?, ?, ?, ?)";
-	$stmt = $connection->prepare($sql);
-	$stmt->bind_param("sssssisi", $firstName, $lastName, $university, $birthday, $showBirthday, $gradYear, $showGradYear);
-
-	if($stmt->execute()) {
+	$sql = "UPDATE profile_meta SET first_name='$firstName', last_name='$lastName', school='$university', dob_show='$showBirthday', grad_year='$gradYear', grad_year_show='$showGradYear' WHERE id=0";
+	$isql = "UPDATE profile_meta SET first_name='$firstName' WHERE id=0";
+	
+	if($connection->query($sql) === TRUE)
 		header("Location: profile.php");
-		exit();
-	}
-	else {
-		echo "Error inserting data: " . $connection->error;
-	}
+	else
+		echo "Error";
 
-	$stmt->close();
 	$connection->close();
 }
 else {
