@@ -9,6 +9,9 @@ $conn = new mysqli($server, $user, $pass, $database);
 
 $user_id = (int) $_GET["id"];
 
+if(!$user_id) {//temporary until user log in/sign in is fixed; defaults to John Doe;
+	$user_id = 2;
+}
 if($user_id == 1) {//temporary; id of 1 will be logged in user's profile
 	$user_id = 2;//temporary; will change to logged in user's id
 }
@@ -33,15 +36,15 @@ $result_post = $conn->query($post);
 	</head>
 	<body>
 		<div class="top-bar">
-			<a href="index.html"><img src="universe_logo.png" alt="UniVerse" height="110"></a>
+			<a href="index.html"><img src="images/universe_logo.png" alt="UniVerse" height="110"></a>
 		</div>
 		<div class="sidebar">
 			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="profile.php">Profile</a></li>
-				<li><a href="Internpage.html">Internship</a></li>
-				<li><a href="RateAProfessorMain.php">Rate a Professor</a></li>
-				<li><a href="general-posts.html">Discussion Posts</a></li>
+				<li><a href="index.html"><img src="images/home.png" height="20" style="margin-right:5px;">Home</a></li>
+				<li><a href="profile.php"><img src="images/profile.png" height="20" style="margin-right:5px;">Profile</a></li>
+				<li><a href="Internpage.html"><img src="images/internship.png" height="20" style="margin-right:5px;">Internship</a></li>
+				<li><a href="RateAProfessorMain.php"><img src="images/rating.png" height="20" style="margin-right:5px;">Professors</a></li>
+				<li><a href="general-posts.html"><img src="images/blog.png" height="20" style="margin-right:5px;">Discussion</a></li>
 			</ul>
 		</div>
 		<div class="main-content">
