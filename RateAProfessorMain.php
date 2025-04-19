@@ -331,7 +331,7 @@ h1 {
 
         if (imageElements.length > 0) {
             imageElements[0].classList.add('active');
-            setInterval(showNextImage, 10000);//Time in ms so this is 10 seconds per slide
+            setInterval(showNextImage, 5000);//Time in ms so this is 5 seconds per slide
         }
     });
 </script>
