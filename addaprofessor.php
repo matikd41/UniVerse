@@ -7,6 +7,8 @@
         body{
             font-family: Arial;
             background: #f4f4f4;
+            background-image: url('images/NDU.jpg');
+            background-size: cover;
             margin: 100px 0;
             padding: 0;
             display: flex;
