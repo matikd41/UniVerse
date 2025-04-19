@@ -15,7 +15,8 @@ if ($connection) {
     mysqli_stmt_bind_param($stmt, "sss", $professorname, $universityname, $departmentname);
 
     if (mysqli_stmt_execute($stmt)) {
-        header("Location: rateaprofessormain.php");
+        $professor_id = mysqli_insert_id($connection);
+        header("Location: rateaprofessor.php?id=" . $professor_id);
         exit();
     } else {
         echo "Error: " . mysqli_error($connection);

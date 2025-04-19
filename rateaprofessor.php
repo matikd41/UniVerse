@@ -42,7 +42,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             <li><a href="rateaprofessormain.php"><img src="rating.png" alt="Star Icon" height="19" style="margin-right: 5px;">Professors</a></li>
             <li><a href="general-posts.html"><img src="blog.png" alt="Blog Icon" height="20" style="margin-right: 5px;">Discussion</a></li>
         </ul>
-    </div>
+    </div>  
 
     <div class="main-content">
     <div class="professor-container">

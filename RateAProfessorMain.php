@@ -248,7 +248,7 @@ h1 {
                         ?>
                                 <div class="school-result" onclick="selectSchool('<?php echo htmlspecialchars($school); ?>')">
                                     <h3><?php echo htmlspecialchars($school); ?></h3>
-                                    <p><?php echo $schoolCounts[$school]; ?> professors rated</p>
+                                    <p><?php echo $schoolCounts[$school]; ?> professors present</p>
                                 </div>
                             <?php endif; ?>
                         <?php endforeach; ?>
