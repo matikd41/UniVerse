@@ -25,15 +25,32 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rate a Professor - UniVerse</title>
     <link rel="stylesheet" href="rateaprofessorstyle.css">
+    <link rel="stylesheet" href="navigationstyle.css">
 </head>
 <body>
 
+
+<div class="top-bar">
+    <a href="index.html"><img src="universe_logo.png" alt="UniVerse Logo" height="110"></a>
+</div>
+
+    <div class="sidebar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="profile.php">Profile</a></li>
+            <li><a href="Internpage.html">Internship</a></li>
+            <li><a href="rateaprofessormain.php">Rate a Professor</a></li>
+            <li><a href="general-posts.html">Discussion Posts</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
     <div class="professor-container">
         <h1><?php echo htmlspecialchars($professor['professorname']); ?></h1>
         <?php echo htmlspecialchars($professor['school']); ?>
         <p>Department of <?php echo htmlspecialchars($professor['department']); ?></p>
-        <p>Overall Rating: <strong>N/A</strong></p>
-        <p>Total Reviews: <strong>N/A</strong></p>
+       <!-- <p>Overall Rating: <strong>N/A</strong></p> -->
+      <!--  <p>Total Reviews: <strong>N/A</strong></p> -->
     </div>
 
     <div class="button-container">
@@ -61,5 +78,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         <?php
     }
     ?>
+</div>
 </body>
 </html>

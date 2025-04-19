@@ -40,26 +40,28 @@ if (isset($_GET['school'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rate a Professor</title>
-    <style>
-        
-        .add-professor {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            width: auto;
-            padding: 8px 16px;
-            background-color: #007bff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
+    <link rel="stylesheet" href="navigationstyle.css">
+    <title>Rate a Professor</title> 
+    <style>  
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 20px 20px 20px;
+}
+
+.add-professor {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
 }
 
 .add-professor:hover {
-  background-color: #0056b3;
+    background-color: #0056b3;
 }
         body {
             font-family: 'Arial', sans-serif;
@@ -75,20 +77,53 @@ if (isset($_GET['school'])) {
             margin: 0 auto;
             padding: 20px;
         }
+
+    header {
+    /* Remove the single background image */
+    /* background-image: url('oakland.jpg'); */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 50px 0;
+    text-align: center;
+    margin-bottom: 5px;
+    position: relative; /* Needed for absolute positioning of images */
+    overflow: hidden; /* Clip images that are out of view */
+    min-height: 200px; /* Adjust as needed */
+    position: relative; /* Ensure stacking context */
+    overflow: hidden;
+    min-height: 200px;
+}
+
+
+.header-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 1s ease-in-out; /* Smooth transition */
+}
+
+.header-image.active {
+    opacity: 1; /* Make the active image visible */
+}
+
         
-        header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-        
+h1 {
+    margin: 0;
+    font-size: 2.5em;
+    position: absolute; /* Position the text over the images */
+    top: 50%;        /* Vertically center the text */
+    left: 50%;       /* Horizontally center the text */
+    transform: translate(-50%, -50%); /* Adjust for the center */
+    z-index: 2;      /* Place the text above the images */
+    color: white;    /* Ensure text is visible */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Optional: add a text shadow for better readability */
+}
         .search-container {
             background-color: white;
             padding: 30px;
@@ -164,13 +199,32 @@ if (isset($_GET['school'])) {
     </style>
 </head>
 <body>
+
+<div class="top-bar">
+    <a href="index.html"><img src="universe_logo.png" alt="UniVerse Logo" height="110"></a>
+</div>
+
+    <div class="sidebar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="profile.php">Profile</a></li>
+            <li><a href="Internpage.html">Internship</a></li>
+            <li><a href="rateaprofessormain.php">Professor</a></li>
+            <li><a href="general-posts.html">Discussion Posts</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
     <header>
         <div class="container">
             <h1>Rate a Professor</h1>
         </div>
     </header>
     
+    <div class="button-container">
     <a href="addaprofessor.php" class="button add-professor">Don't see your school/professor?</a>
+    </div>
+
     <div class="container">
         <div class="search-container">
             <!-- School search -->
@@ -230,7 +284,7 @@ if (isset($_GET['school'])) {
             </div>
         </div>
     </div>
-    
+                    </div>
     <script>
         function selectSchool(school) {
             window.location.href = "<?php echo $_SERVER['PHP_SELF']; ?>?school=" + encodeURIComponent(school);
@@ -242,4 +296,38 @@ if (isset($_GET['school'])) {
         });
     </script>
 </body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const header = document.querySelector('header');
+        const images = [
+            'oakland.jpg',
+            'UMich.jpg',
+            'MSU.jpg'
+        ];
+        let currentIndex = 0;
+
+        function createAndAppendImage(imageUrl) {
+            const imgDiv = document.createElement('div');
+            imgDiv.classList.add('header-image');
+            imgDiv.style.backgroundImage = `url('${imageUrl}')`;
+            header.appendChild(imgDiv);
+            return imgDiv;
+        }
+
+        const imageElements = images.map(createAndAppendImage);
+
+        function showNextImage() {
+            imageElements[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            imageElements[currentIndex].classList.add('active');
+        }
+
+        if (imageElements.length > 0) {
+            imageElements[0].classList.add('active');
+            setInterval(showNextImage, 10000);//Time in ms
+        }
+    });
+</script>
+
 </html>

@@ -11,6 +11,7 @@ if(isset($_GET['id'])&& is_numeric($_GET['id'])){
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add a Professor Rating - UniVerse</title>
+    <link rel="stylesheet" href="navigationstyle.css">
     <style>
         body{
             font-family: Arial;
@@ -71,6 +72,21 @@ if(isset($_GET['id'])&& is_numeric($_GET['id'])){
     </style>
 </head>
 <body>
+
+<div class="top-bar">
+    <a href="index.html"><img src="universe_logo.png" alt="UniVerse Logo" height="110"></a>
+</div>
+
+    <div class="sidebar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="profile.php">Profile</a></li>
+            <li><a href="Internpage.html">Internship</a></li>
+            <li><a href="rateaprofessormain.php">Rate a Professor</a></li>
+            <li><a href="general-posts.html">Discussion Posts</a></li>
+        </ul>
+    </div>
+
     <div class="review-container">
         <h1>Add a Rating</h1>
         <form action="process-rating.php" method="post">

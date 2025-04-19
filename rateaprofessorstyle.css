@@ -15,10 +15,11 @@ body {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 400px;
+  max-width: 800px; /* optional — adjust as needed */
   text-align: center;
-  margin-bottom: 20px;
+  margin: 0 auto 20px; /* center horizontally + spacing at bottom */
 }
+
 
 h1 {
   margin-bottom: 10px;
@@ -30,13 +31,12 @@ p {
 
 .button-container {
   width: 100%;
-  max-width: 400px;
   text-align: center;
 }
 
 .add-rating {
   display: inline-block;
-  width: 100%;
+  width: 25%;
   padding: 10px;
   margin: 5px 0;
   background-color: #28a745;
@@ -72,9 +72,10 @@ p {
 
 .reviews {
   width: 100%;
-  max-width: 700px;
+  max-width: 800px;
   margin-top: 20px;
   padding: 0 20px;
+  margin: 0 auto 20px;
 }
 
 .review-container {
