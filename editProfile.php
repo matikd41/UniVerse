@@ -45,8 +45,7 @@ $meta = $result->fetch_assoc();
 				<input type="text" id="university" name="university"value ="<?php echo $meta["school"]?>">
 			</div>
 			<div class="item">
-				<label for="birthday" name="birthday">Date of Birth:</label>
-				<input type="date" id="birthday" name="birthday">
+				<span>Birthday: <?php echo $meta["dob"] ?></span>
 				<input type="checkbox" id="showBirthday" name="showBirthday"<?php if($meta["dob_show"]) echo "checked";?>>
 				<label id="showBirthday" name="showBirthday">Show on profile?</label>
 			</div>

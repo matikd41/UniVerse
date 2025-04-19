@@ -7,9 +7,9 @@ $database = "universe_db";
 
 $conn = new mysqli($server, $user, $pass, $database);
 
-$profile_meta = "SELECT * FROM profile_meta";
+$profile_meta = "SELECT * FROM profile_meta";//profile metadata
 
-$post = "SELECT * FROM post";
+$post = "SELECT * FROM post";//user posts
 
 $result_profile = $conn->query($profile_meta);
 $row_profile = $result_profile->fetch_assoc();
@@ -40,10 +40,12 @@ $result_post = $conn->query($post);
 				<div class="post">
 					<label for="newPost">Post something new!</label>
 					<br>
+					<form action="newPost.php" method="post">
 					<input style="width:80%;"type="text" id="newPost" name="newPost">
 					<button type="submit">Post</button>
+					</form>
 				</div>
-				<?php while($row_post = $result_post->fetch_assoc()) { ?>
+				<?php while($row_post = $result_post->fetch_assoc()) {//while loop to create divs for each post ?>
 				<div class="post">
 					<img src="images/defaultPfp.jpg" alt="User profile picture">
 					<p class="post-info" style="display:inline;"><?php echo $row_post["name"] ?></p>
@@ -57,6 +59,7 @@ $result_post = $conn->query($post);
 					<h3 style="color:green;">● Online</h3>
 					<h3><i class="nf nf-fa-graduation_cap"></i> Student</h3>
 					<h3><i class="nf nf-fa-school"></i> <?php echo "Attending " . $row_profile["school"] ?></h3>
+					<a href="editProfile.php">Edit Profile</a>
 				</div>
 			</div>
 	</body>
