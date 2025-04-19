@@ -254,7 +254,7 @@ h1 {
                         <?php endforeach; ?>
                         
                         <?php if (!$hasResults): ?>
-                            <p>No schools found. Try a different search.</p>
+                            <p>No schools found. Try a different search or add them <a href="addaprofessor.php">here</a>!</p>
                         <?php endif; ?>
                     <?php endif; ?>
                 </div>
@@ -304,8 +304,11 @@ h1 {
         const images = [
             'images/oakland.jpg',
             'images/UMich.jpg',
-            'images/MSU.jpg',
-            'images/UT.jpg'
+            'images/MSUni.jpg',
+            'images/UT.jpg',
+            'images/yonsei.jpg',
+            'images/kings.jpg',
+            'images/NUST.jpg'
         ];
         let currentIndex = 0;
 
@@ -327,7 +330,7 @@ h1 {
 
         if (imageElements.length > 0) {
             imageElements[0].classList.add('active');
-            setInterval(showNextImage, 10000);//Time in ms
+            setInterval(showNextImage, 10000);//Time in ms so this is 10 seconds per slide
         }
     });
 </script>
