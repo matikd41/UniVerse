@@ -25,7 +25,7 @@ if (isset($_GET['school'])) {
     
     if (isset($_GET['professor_query'])) {
         $searchQuery = mysqli_real_escape_string($connection, $_GET['professor_query']);
-        $sql .= " AND name LIKE '%$searchQuery%'";
+        $sql .= " AND professorname LIKE '%$searchQuery%'";
     }
     
     $professorResult = $connection->query($sql);
