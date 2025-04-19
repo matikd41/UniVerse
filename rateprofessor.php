@@ -74,15 +74,15 @@ if(isset($_GET['id'])&& is_numeric($_GET['id'])){
 <body>
 
 <div class="top-bar">
-    <a href="index.html"><img src="universe_logo.png" alt="UniVerse Logo" height="110"></a>
+    <a href="index.html"><img src="images/universe_logo.png" alt="UniVerse Logo" height="110"></a>
 </div>
 <div class="sidebar">
         <ul>
-            <li><a href="index.html"><img src="home.png" alt="Home Icon" height="20" style="margin-right: 5px;">Home</a></li>
-            <li><a href="profile.php"><img src="profile.png" alt="Profile Icon" height="25" style="margin-right: 5px;">Profile</a></li>
-            <li><a href="Internpage.html"><img src="internship.png" alt="Intern Icon" height="20" style="margin-right: 5px;">Internship</a></li>
-            <li><a href="rateaprofessormain.php"><img src="rating.png" alt="Star Icon" height="19" style="margin-right: 5px;">Professors</a></li>
-            <li><a href="general-posts.html"><img src="blog.png" alt="Blog Icon" height="20" style="margin-right: 5px;">Discussion</a></li>
+            <li><a href="index.html"><img src="images/home.png" alt="Home Icon" height="20" style="margin-right: 5px;">Home</a></li>
+            <li><a href="profile.php"><img src="images/profile.png" alt="Profile Icon" height="25" style="margin-right: 5px;">Profile</a></li>
+            <li><a href="Internpage.html"><img src="images/internship.png" alt="Intern Icon" height="20" style="margin-right: 5px;">Internship</a></li>
+            <li><a href="rateaprofessormain.php"><img src="images/rating.png" alt="Star Icon" height="19" style="margin-right: 5px;">Professors</a></li>
+            <li><a href="general-posts.html"><img src="images/blog.png" alt="Blog Icon" height="20" style="margin-right: 5px;">Discussion</a></li>
         </ul>
     </div>
 
