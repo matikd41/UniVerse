@@ -6,6 +6,9 @@
 .banner {
 	height: 200px;
 	width: 100%;
+	background: center;
+	background-size: cover;
+	background-repeat: no-repeat;
 	/*outline-style: solid;*/
 }
 

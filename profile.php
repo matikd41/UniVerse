@@ -28,20 +28,30 @@ $result_post = $conn->query($post);
 		<meta charset ="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>UniVerse - Profile</title>
-		<link href="style.css" rel="stylesheet" type="text/css" media="all">
 		<link href="profile.css" rel="stylesheet" type="text/css" media="all">
+		<link href="navigationstyle.css" rel="stylesheet" type="text/css" media="all">
 	</head>
 	<body>
-		<div class="header">
-			<a href="index.html"><img src="" alt="UniVerse"></a>
+		<div class="top-bar">
+			<a href="index.html"><img src="universe_logo.png" alt="UniVerse" height="110"></a>
 		</div>
-		<div class="banner" style="background:grey">
-			<div class="banner2">
-				<img class="profilePic" src="images/defaultPfp.jpg" alt="User profile picture">
-				<span class="name"><?php echo $row_profile["first_name"] . " " . $row_profile["last_name"]; ?> </span>
+		<div class="sidebar">
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="profile.php">Profile</a></li>
+				<li><a href="Internpage.html">Internship</a></li>
+				<li><a href="RateAProfessorMain.php">Rate a Professor</a></li>
+				<li><a href="general-posts.html">Discussion Posts</a></li>
+			</ul>
+		</div>
+		<div class="main-content">
+			<div class="banner" style="background-image: url('images/defaultBG.jpg')">
+				<div class="banner2">
+					<img class="profilePic" src="images/defaultPfp.jpg" alt="User profile picture">
+					<span class="name"><?php echo $row_profile["first_name"] . " " . $row_profile["last_name"]; ?></span>
+				</div>
 			</div>
-		</div>
-		<div class="container">
+			<div class="container">
 			<div class="content-left">
 				<div class="post">
 					<!--- div for creating new posts --->
@@ -74,6 +84,7 @@ $result_post = $conn->query($post);
 					<h3><i class="nf nf-fa-school"></i> <?php echo "Attending " . $row_profile["school"] ?></h3>
 					<a href="editProfile.php">Edit Profile</a>
 				</div>
+			</div>
 			</div>
 	</body>
 </html>
