@@ -6,10 +6,10 @@ ob_end_clean(); //removes the "You are conneceted" from the top
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $professorId = (int) $_GET['id']; // Cast to int for safety
 
-    $sqlReviews = "SELECT * FROM professorreviews WHERE professor_id = $professorId"; 
+    $sqlReviews = "SELECT *, DATE_FORMAT(date, '%M %e, %Y') AS formatted_time FROM professorreviews WHERE professor_id = $professorId ORDER BY date DESC";
     $professorreviews = $connection->query($sqlReviews);
 
-    $sqlProfessor = "SELECT * FROM professors WHERE id = $professorId"; 
+    $sqlProfessor = "SELECT * FROM professors WHERE id = $professorId";
     $professor = $connection->query($sqlProfessor)->fetch_assoc();
 
    // echo "You are viewing professor with name: " . $professor['professorname']; //Test to see if you're directed correctly
@@ -26,6 +26,18 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     <title>Rate a Professor - UniVerse</title>
     <link rel="stylesheet" href="rateaprofessorstyle.css">
     <link rel="stylesheet" href="navigationstyle.css">
+    <style>
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .time-posted {
+            font-size: 0.8em;
+            color: #777;
+        }
+    </style>
 </head>
 <body>
 
@@ -49,9 +61,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         <h1><?php echo htmlspecialchars($professor['professorname']); ?></h1>
         <?php echo htmlspecialchars($professor['school']); ?>
         <p>Department of <?php echo htmlspecialchars($professor['department']); ?></p>
-       <!-- <p>Overall Rating: <strong>N/A</strong></p> -->
-      <!--  <p>Total Reviews: <strong>N/A</strong></p> -->
-    </div>
+        </div>
 
     <div class="button-container">
         <a href="rateprofessor.php?id=<?php echo$professorId;?>" class="button add-rating">Give a Rating</a>
@@ -62,6 +72,9 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         ?>
         <div class="reviews">
             <div class="review-container">
+                <div class="review-header">
+                    <div></div> <p class="time-posted">Posted on: <?php echo htmlspecialchars($column['formatted_time']); ?></p>
+                </div>
                 <div class="review">
                     <p><strong>Course Name:</strong> <?php echo htmlspecialchars($column['Course_Number']); ?></p>
                     <p><strong>Online Class:</strong> <?php echo $column['Online_Class'] ? 'Yes' : 'No'; ?></p>
