@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 17, 2025 at 12:42 AM
+-- Generation Time: Apr 20, 2025 at 12:10 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -28,12 +28,14 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `profile_meta` (
+  `ID` int(11) NOT NULL,
+  `email` text NOT NULL,
   `first_name` tinytext NOT NULL,
   `last_name` tinytext NOT NULL,
   `school` text NOT NULL,
   `dob` date NOT NULL,
   `dob_show` tinyint(1) NOT NULL,
-  `grad_year` year(4) NOT NULL,
+  `grad_year` int(4) NOT NULL,
   `grad_year_show` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -41,8 +43,31 @@ CREATE TABLE `profile_meta` (
 -- Dumping data for table `profile_meta`
 --
 
-INSERT INTO `profile_meta` (`first_name`, `last_name`, `school`, `dob`, `dob_show`, `grad_year`, `grad_year_show`) VALUES
-('John', 'Doe', 'Oakland University', '2000-01-01', 0, '2027', 0);
+INSERT INTO `profile_meta` (`ID`, `email`, `first_name`, `last_name`, `school`, `dob`, `dob_show`, `grad_year`, `grad_year_show`) VALUES
+(2, 'johndoe@oakland.edu', 'John', 'Doe', 'Oakland University', '2000-01-01', 1, 2025, 1);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `profile_meta`
+--
+ALTER TABLE `profile_meta`
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `ID_3` (`ID`),
+  ADD KEY `ID` (`ID`),
+  ADD KEY `ID_2` (`ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `profile_meta`
+--
+ALTER TABLE `profile_meta`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

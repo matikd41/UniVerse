@@ -3,9 +3,11 @@
 $servername = "localhost";
 $username = "root"; 
 $password = ""; 
-$dbname = "universe_users";
+$dbname = "universe_db";
 
 $conn = new mysqli($servername, $username, $password, $dbname); 
+
+global $email;
 
 $message = ""; 
 if ($conn->connect_error) {
@@ -21,8 +23,9 @@ if
 
 $sql = "INSERT INTO users (email, password) VALUES ('$email', '$password')"; 
 if ($conn->query($sql) === TRUE) { 
-    $message =  "Signup succesful!"; 
-
+    $message =  "Signup succesful! Redirecting..."; 
+    sleep(3);
+    header("Location: register.php");
 } else { 
     $message = "Error: " . $conn->error; 
 

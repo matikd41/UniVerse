@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 18, 2025 at 01:00 AM
+-- Generation Time: Apr 20, 2025 at 12:10 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,7 +40,7 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`post_id`, `user_id`, `name`, `post`, `date`) VALUES
-(680187, 0, 'John Doe', 'awef', '2025-04-17 22:58:50');
+(680210, 2, 'John Doe', 'te', '2025-04-19 20:52:26');
 
 --
 -- Indexes for dumped tables
@@ -52,6 +52,16 @@ INSERT INTO `post` (`post_id`, `user_id`, `name`, `post`, `date`) VALUES
 ALTER TABLE `post`
   ADD PRIMARY KEY (`post_id`),
   ADD UNIQUE KEY `post_id` (`post_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `post`
+--
+ALTER TABLE `post`
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=680212;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
