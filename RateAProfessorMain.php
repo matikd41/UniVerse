@@ -41,6 +41,7 @@ if (isset($_GET['school'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="navigationstyle.css">
+    
     <title>Rate a Professor</title> 
     <style>  
 .button-container {
@@ -206,11 +207,11 @@ h1 {
 
     <div class="sidebar">
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="profile.php">Profile</a></li>
-            <li><a href="Internpage.html">Internship</a></li>
-            <li><a href="rateaprofessormain.php">Professor</a></li>
-            <li><a href="general-posts.html">Discussion Posts</a></li>
+            <li><a href="index.html"><img src="home.png" alt="Home Icon" height="20" style="margin-right: 5px;">Home</a></li>
+            <li><a href="profile.php"><img src="profile.png" alt="Profile Icon" height="25" style="margin-right: 5px;">Profile</a></li>
+            <li><a href="Internpage.html"><img src="internship.png" alt="Intern Icon" height="20" style="margin-right: 5px;">Internship</a></li>
+            <li><a href="rateaprofessormain.php"><img src="rating.png" alt="Star Icon" height="19" style="margin-right: 5px;">Professors</a></li>
+            <li><a href="general-posts.html"><img src="blog.png" alt="Blog Icon" height="20" style="margin-right: 5px;">Discussion</a></li>
         </ul>
     </div>
 
