@@ -1,7 +1,16 @@
+<?php
+if(isset($_GET['id'])&& is_numeric($_GET['id'])){
+    $professorId=(int)$_GET['id'];
+} else{
+    echo "Invalid Professor ID";
+    exit;
+}
+?>
+
 <html lang="eng">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Add a Professor - UniVerse</title>
+    <title>Add a Professor Rating - UniVerse</title>
     <style>
         body{
             font-family: Arial;
@@ -63,17 +72,10 @@
 </head>
 <body>
     <div class="review-container">
-        <h1>Add a Professor</h1>
-        <form id="reviwForm">
+        <h1>Add a Rating</h1>
+        <form action="process-rating.php" method="post">
+        <input type="hidden" name="professor_id" value="<?php echo $professorId; ?>">
             <div class="form-group">
-                <label for="universityName"> Name of School:</label>
-                <input type="text" id="universityName" name="universityName" required>
-            <div>
-                
-            <div class="form-group">
-                <label for="professorName">Professor's Name:</label>
-                <input type="text" id="professorName" name="professorName" required>
-            <div>
 
             <div class="form-group">
                 <label for="courseName">Course Name:</label>

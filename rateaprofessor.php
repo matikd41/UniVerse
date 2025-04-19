@@ -3,9 +3,19 @@
 require_once 'database.php';
 ob_end_clean(); //removes the "You are conneceted" from the top
 
-$sql = "SELECT * FROM professorreviews"; 
-$professorreviews = $connection->query($sql);
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    $professorId = (int) $_GET['id']; // Cast to int for safety
 
+    $sqlReviews = "SELECT * FROM professorreviews WHERE professor_id = $professorId"; 
+    $professorreviews = $connection->query($sqlReviews);
+
+    $sqlProfessor = "SELECT * FROM professors WHERE id = $professorId"; 
+    $professor = $connection->query($sqlProfessor)->fetch_assoc();
+
+   // echo "You are viewing professor with name: " . $professor['professorname']; //Test to see if you're directed correctly
+} else {
+    echo "Invalid or missing professor ID.";
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,15 +30,15 @@ $professorreviews = $connection->query($sql);
     <a href="addaprofessor.html" class="button add-professor">Add a Professor</a>
 
     <div class="professor-container">
-        <h1>John Doe</h1>
-        <p>School Name</p>
-        <p>Department Name</p>
+        <h1><?php echo htmlspecialchars($professor['professorname']); ?></h1>
+        <?php echo htmlspecialchars($professor['school']); ?>
+        <p>Department of <?php echo htmlspecialchars($professor['department']); ?></p>
         <p>Overall Rating: <strong>N/A</strong></p>
         <p>Total Reviews: <strong>N/A</strong></p>
     </div>
 
     <div class="button-container">
-        <a href="rateprofessor.html" class="button add-rating">Give a Rating</a>
+        <a href="rateprofessor.php?id=<?php echo$professorId;?>" class="button add-rating">Give a Rating</a>
     </div>
 
     <?php
