@@ -27,7 +27,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     <link rel="stylesheet" href="rateaprofessorstyle.css">
 </head>
 <body>
-    <a href="addaprofessor.html" class="button add-professor">Add a Professor</a>
 
     <div class="professor-container">
         <h1><?php echo htmlspecialchars($professor['professorname']); ?></h1>

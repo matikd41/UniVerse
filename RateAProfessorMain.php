@@ -42,6 +42,25 @@ if (isset($_GET['school'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rate a Professor</title>
     <style>
+        
+        .add-professor {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            width: auto;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+}
+
+.add-professor:hover {
+  background-color: #0056b3;
+}
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
@@ -151,6 +170,7 @@ if (isset($_GET['school'])) {
         </div>
     </header>
     
+    <a href="addaprofessor.php" class="button add-professor">Don't see your school/professor?</a>
     <div class="container">
         <div class="search-container">
             <!-- School search -->
