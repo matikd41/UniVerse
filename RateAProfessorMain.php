@@ -308,7 +308,8 @@ h1 {
             'images/UT.jpg',
             'images/yonsei.jpg',
             'images/kings.jpg',
-            'images/NUST.jpg'
+            'images/NUST.jpg',
+            'images/UoI.jpg'
         ];
         let currentIndex = 0;
 
