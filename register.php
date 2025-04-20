@@ -1,6 +1,41 @@
 <?php
 
+require_once "database.php";
+ob_end_clean();
 
+
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+	$email = $_COOKIE["email"];
+	$fname = $_POST["fname"];
+	$lname = $_POST["lname"];
+	$school = $_POST["school"];
+	$dob = date("Y-m-d", strtotime($_POST["dob"]));
+	if(isset($_POST["show_dob"])) {
+		$show_dob = 1;
+	}
+	else {
+		$show_dob = 0;
+	}
+	$grad_year = $_POST["grad_year"];
+	if(isset($_POST["show_grad_year"])) {
+		$show_grad_year = 1;
+	}
+	else {
+		$show_grad_year = 0;
+	}
+
+	$sql = "INSERT INTO profile_meta (email, first_name, last_name, school, dob, dob_show, grad_year, grad_year_show) VALUES ('$email', '$fname', '$lname', '$school', '$dob', '$show_dob', '$grad_year', '$show_grad_year')";
+	if($connection->query($sql)) {
+		$profile = "SELECT * FROM profile_meta WHERE email = '$email'";
+		$sqli = $connection->query($profile);
+		$row = $sqli->fetch_assoc();
+		$new_id = $row["ID"];
+		setcookie("user_id", '$new_id["ID"]', time() + 86400, "/");
+		header("Location: profile.php?id=$new_id");
+	}
+	else echo $connection->error;
+	$connection->close();
+}
 
 ?> 
 
@@ -63,8 +98,10 @@ button:hover {
     <h2>Fill in info</h2> 
 
     <div class="message-box"> 
-    <?php echo $message; ?>
-    <form method="POST" action="">
+    <?php echo $_COOKIE["email"]; ?>
+    <br>
+    <br>
+    <form name="data" method="POST" action="">
     <label for="fname" name="fname">First Name</label>
     <input type="text" name="fname" placeholder="First Name" required>
 
@@ -74,17 +111,17 @@ button:hover {
     <label for="school" name="school">University</label>
     <input type="text" name="school" placeholder="University" required>
 
-    <label for="dob" name="dob">Date of Birth</label>
+    <label for="dob" name="dob" value="<?php echo date('Y-m-d')?>">Date of Birth</label>
     <input type="date" name="dob" required>
-
+<br>
     <label for="show_dob" name="show_dob">Show date of birth of profile?</label>
-    <input type="checkbox" name="show_dob" required>
-
+    <input type="checkbox" name="show_dob">
+<br>
+<br>
     <label for="grad_year" name="grad_year">Expected year of graduation</label>
-    <input type="text" name="grad_year" required>
-
+    <input type="number" name="grad_year" placeholder="<?php echo date('Y')?>" min="<?php echo date('Y')?>" required>
     <label for="show_grad_year" name="show_grad_year">Show expected year of graduation on profile?</label>
-    <input type="checkbox" name="show_grad_year" required>
+    <input type="checkbox" name="show_grad_year">
 
     <button type="submit">Submit</button>
 </form>

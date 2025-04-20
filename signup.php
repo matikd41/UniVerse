@@ -7,7 +7,6 @@ $dbname = "universe_db";
 
 $conn = new mysqli($servername, $username, $password, $dbname); 
 
-global $email;
 
 $message = ""; 
 if ($conn->connect_error) {
@@ -24,7 +23,7 @@ if
 $sql = "INSERT INTO users (email, password) VALUES ('$email', '$password')"; 
 if ($conn->query($sql) === TRUE) { 
     $message =  "Signup succesful! Redirecting..."; 
-    sleep(3);
+    setcookie("email", $email, time() + 86400, "/");
     header("Location: register.php");
 } else { 
     $message = "Error: " . $conn->error; 
