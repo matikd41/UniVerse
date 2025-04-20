@@ -6,23 +6,26 @@ $pass = "";
 $database = "universe_db";
 
 $conn = new mysqli($server, $user, $pass, $database);
+$curr_user_id = $_COOKIE["user_id"];
 
-$user_id = (int) $_GET["id"];
 
-if(!$user_id) {//temporary until user log in/sign in is fixed; defaults to John Doe;
-	$user_id = 2;
+if(isset($_GET["id"])) {//direct to the profile page of user_id from GET, regardless of whether you are signed in
+	$curr_user_id = $_GET["id"];
 }
-if($user_id == 1) {//temporary; id of 1 will be logged in user's profile
-	$user_id = 2;//temporary; will change to logged in user's id
+elseif(!isset($_COOKIE["user_id"])) {//if not signed in, redirect to log in
+	header("Location: Signup.html");
 }
+$is_curr_user = isset($_COOKIE["user_id"]) && $curr_user_id == $_COOKIE["user_id"];//bool to see if this is user's page
 
-$profile_meta = "SELECT * FROM profile_meta WHERE ID = $user_id";//profile metadata
+$profile_meta = "SELECT * FROM profile_meta WHERE ID = $curr_user_id";//profile metadata
 
-$post = "SELECT * FROM post WHERE user_id = $user_id";//user posts
+$post = "SELECT * FROM post WHERE user_id = $curr_user_id ORDER BY post_id DESC";//user posts
 
 $result_profile = $conn->query($profile_meta);
 $row_profile = $result_profile->fetch_assoc();
 $result_post = $conn->query($post);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +65,7 @@ $result_post = $conn->query($post);
 					<br>
 					<form name="nPost" action="newPost.php" onsubmit="return validatePost()" method="post">
 					<input style="width:80%;"type="text" id="newPost" name="newPost">
-					<input type="hidden" name="id" id="id" value="<?php echo $user_id; ?>" />
+					<input type="hidden" name="id" id="id" value="<?php echo $curr_user_id; ?>" />
 					<button type="submit">Post</button>
 					</form>
 				</div>
@@ -72,8 +75,10 @@ $result_post = $conn->query($post);
 					<p class="post-info" style="display:inline;"><?php echo $row_post["name"] ?></p>
 					<form action="deletePost.php" onsubmit="return confirmDelete()" method="post">
 					<input type="hidden" name="post-id" id="post-id" value="<?php echo $row_post["post_id"] ?>" />
-					<input type="hidden" name="user-id" id="user-id" value="<?php echo $user_id ?>" />
-					<button type="submit" class="del">Delete Post</button>
+					<input type="hidden" name="user-id" id="user-id" value="<?php echo $curr_user_id ?>" />
+					<?php if($is_curr_user) {//only show delete if logged in user is the user in profile
+					echo '<button type="submit" class="del">Delete Post</button>';
+					} ?>
 					</form>
 					<p class="post-text"><?php echo $row_post["post"] ?></p>
 					<p class="post-info" style="text-align:right;"><?php echo "Posted " . $row_post["date"] ?></p>
@@ -85,7 +90,9 @@ $result_post = $conn->query($post);
 					<h3 style="color:green;">● Online</h3>
 					<h3><i class="nf nf-fa-graduation_cap"></i> Student</h3>
 					<h3><i class="nf nf-fa-school"></i> <?php echo "Attending " . $row_profile["school"] ?></h3>
-					<a href="editProfile.php">Edit Profile</a>
+					<?php if($is_curr_user) {//only allow edit if logged in user is the user in profile
+					echo '<a href="editProfile.php">Edit Profile</a>';
+					} ?>
 				</div>
 			</div>
 			</div>

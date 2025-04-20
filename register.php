@@ -30,7 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		$sqli = $connection->query($profile);
 		$row = $sqli->fetch_assoc();
 		$new_id = $row["ID"];
-		setcookie("user_id", '$new_id["ID"]', time() + 86400, "/");
+		setcookie("user_id", $new_id, time() + 86400, "/");
 		header("Location: profile.php?id=$new_id");
 	}
 	else echo $connection->error;
