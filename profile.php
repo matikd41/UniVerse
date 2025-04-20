@@ -36,6 +36,7 @@ $result_post = $conn->query($post);
 		<title>UniVerse - Profile</title>
 		<link href="profile.css" rel="stylesheet" type="text/css" media="all">
 		<link href="navigationstyle.css" rel="stylesheet" type="text/css" media="all">
+		<script src="signout.js"></script>
 	</head>
 	<body>
 		<div class="top-bar">
@@ -48,6 +49,8 @@ $result_post = $conn->query($post);
 				<li><a href="Internpage.html"><img src="images/internship.png" height="20" style="margin-right:5px;">Internship</a></li>
 				<li><a href="RateAProfessorMain.php"><img src="images/rating.png" height="20" style="margin-right:5px;">Professors</a></li>
 				<li><a href="general-posts.html"><img src="images/blog.png" height="20" style="margin-right:5px;">Discussion</a></li>
+				<li><a href="javascript:signOut();"><img src="images/blog.png" height="20" style="margin-right:5px;">Signout</a></li>
+
 			</ul>
 		</div>
 		<div class="main-content">
