@@ -49,7 +49,7 @@ $result_post = $conn->query($post);
 				<li><a href="Internpage.html"><img src="images/internship.png" height="20" style="margin-right:5px;">Internship</a></li>
 				<li><a href="RateAProfessorMain.php"><img src="images/rating.png" height="20" style="margin-right:5px;">Professors</a></li>
 				<li><a href="general-posts.html"><img src="images/blog.png" height="20" style="margin-right:5px;">Discussion</a></li>
-				<li><a href="javascript:signOut();"><img src="images/blog.png" height="20" style="margin-right:5px;">Signout</a></li>
+				<li><a href="javascript:signOut();"><img src="images/profile.png" height="20" style="margin-right:5px;">Signout</a></li>
 
 			</ul>
 		</div>
@@ -64,18 +64,17 @@ $result_post = $conn->query($post);
 			<div class="content-left">
 				<div class="post">
 					<!--- div for creating new posts --->
-					<label for="newPost">Post something new!</label>
 					<br>
 					<form name="nPost" action="newPost.php" onsubmit="return validatePost()" method="post">
-					<input style="width:80%;"type="text" id="newPost" name="newPost">
+					<input style="width:80%; font-size:1.25em;"type="text" id="newPost" name="newPost" placeholder="Post something new!">
 					<input type="hidden" name="id" id="id" value="<?php echo $curr_user_id; ?>" />
-					<button type="submit">Post</button>
+					<button type="submit" style="padding:20px; font-size: 1.25em;">Post!</button>
 					</form>
 				</div>
 				<?php while($row_post = $result_post->fetch_assoc()) {//while loop to create divs for each post ?>
 				<div class="post">
-					<img src="images/defaultPfp.jpg" alt="User profile picture">
-					<p class="post-info" style="display:inline;"><?php echo $row_post["name"] ?></p>
+					<img src="images/defaultPfp.jpg" style="display:inline;"alt="User profile picture">
+					<p class="post-info post-name" style="display:inline;"><?php echo $row_post["name"] ?></p>
 					<form action="deletePost.php" onsubmit="return confirmDelete()" method="post">
 					<input type="hidden" name="post-id" id="post-id" value="<?php echo $row_post["post_id"] ?>" />
 					<input type="hidden" name="user-id" id="user-id" value="<?php echo $curr_user_id ?>" />

@@ -6,7 +6,6 @@ ob_end_clean();
 $firstName = $_POST["firstName"];
 $lastName = $_POST["lastName"];
 $university = $_POST["university"];
-$birthday = $_POST["birthday"];
 $showBirthday = isset($_POST["showBirthday"]) ? filter_input(INPUT_POST, "showBirthday", FILTER_VALIDATE_BOOL): false;
 $gradYear = $_POST["gradYear"];
 $showGradYear = isset($_POST["showGradYear"]) ? filter_input(INPUT_POST, "showGradYear", FILTER_VALIDATE_BOOL): false;

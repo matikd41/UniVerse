@@ -1,4 +1,9 @@
 @import "https://www.nerdfonts.com/assets/css/webfont.css";
+body {
+	font-family: "Arial", sans-serif;
+	font-size: 16px;
+	background-color: #f5f5f5;
+}
 .container {
 	display: flex;
 	margin-top: 25px;
@@ -24,6 +29,7 @@
 	position: relative;
 	height: 100px;
 	width: 100px;
+	border-radius:50px;
 }
 
 .name {
@@ -51,17 +57,42 @@
 .post img {
 	width: 50px;
 }
+
+input[type="text"] {
+	padding: 20px;
+	border-radius: 5px;
+}
+
+button {
+	background-color: #b3a369;
+	border-radius: 5px;
+}
+
+button:hover {
+	background-color: #c2b587;
+}
+
 .post-text {
 	font-size: 1.5em;
+	padding: 10px;
+	position: relative;
+	bottom: 30px;
 }
 
 .post-info {
 	font-size: .75em;
 }
 
+.post-name {
+	position: relative;
+	bottom: 20px;
+}
+
 .del {
+	display:inline;
 	position: relative;
 	left: 90%;
+	bottom: 35px;
 }
 
 .user-info {
