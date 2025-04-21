@@ -3,7 +3,14 @@
 require_once "database.php";
 ob_end_clean();
 
-$sql = "SELECT * FROM profile_meta";
+$curr_user_id = $_COOKIE["user_id"];
+
+if(!isset($_COOKIE["user_id"])) {//if not logged in, redirect to login
+	header("Location: Signup.html");
+}
+
+
+$sql = "SELECT * FROM profile_meta WHERE ID = $curr_user_id";//obtain user's metadata
 $result = $connection->query($sql);
 $meta = $result->fetch_assoc();
 

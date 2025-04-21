@@ -64,12 +64,14 @@ $result_post = $conn->query($post);
 			<div class="content-left">
 				<div class="post">
 					<!--- div for creating new posts --->
+					<?php if($is_curr_user) {//only show delete if logged in user is the user in profile ?>
 					<br>
 					<form name="nPost" action="newPost.php" onsubmit="return validatePost()" method="post">
 					<input style="width:80%; font-size:1.25em;"type="text" id="newPost" name="newPost" placeholder="Post something new!">
 					<input type="hidden" name="id" id="id" value="<?php echo $curr_user_id; ?>" />
 					<button type="submit" style="padding:20px; font-size: 1.25em;">Post!</button>
 					</form>
+					<?php } ?>
 				</div>
 				<?php while($row_post = $result_post->fetch_assoc()) {//while loop to create divs for each post ?>
 				<div class="post">
