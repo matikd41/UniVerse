@@ -29,11 +29,11 @@ $meta = $result->fetch_assoc();
 	</head>
 	<body>
 		<div class="top-bar">
-			<a href="index.html"><img src="images/universe_logo.png" alt="UniVerse" height="110"></a>
+			<a href="index.php"><img src="images/universe_logo.png" alt="UniVerse" height="110"></a>
 		</div>
 		<div class="sidebar">
 			<ul>
-				<li><a href="index.html"><img src="images/home.png" height="20" style="margin-right:5px;">Home</a></li>
+				<li><a href="index.php"><img src="images/home.png" height="20" style="margin-right:5px;">Home</a></li>
 				<li><a href="profile.php"><img src="images/profile.png" height="20" style="margin-right:5px;">Profile</a></li>
 				<li><a href="Internpage.html"><img src="images/internship.png" height="20" style="margin-right:5px;">Internship</a></li>
 				<li><a href="rateaprofessormain.php"><img src="images/rating.png" height="20" style="margin-right:5px;">Professors</a></li>
