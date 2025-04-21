@@ -48,7 +48,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 <div class="sidebar">
         <ul>
-            <li><a href="index.html"><img src="images/home.png" alt="Home Icon" height="20" style="margin-right: 5px;">Home</a></li>
+            <li><a href="index.php"><img src="images/home.png" alt="Home Icon" height="20" style="margin-right: 5px;">Home</a></li>
             <li><a href="profile.php"><img src="images/profile.png" alt="Profile Icon" height="25" style="margin-right: 5px;">Profile</a></li>
             <li><a href="Internpage.html"><img src="images/internship.png" alt="Intern Icon" height="20" style="margin-right: 5px;">Internship</a></li>
             <li><a href="rateaprofessormain.php"><img src="images/rating.png" alt="Star Icon" height="19" style="margin-right: 5px;">Professors</a></li>
