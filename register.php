@@ -95,7 +95,7 @@ button:hover {
 </head> 
 <body>
     <div class="container">  
-    <h2>Fill in info</h2> 
+    <h2>Finish setting up your account</h2> 
 
     <div class="message-box"> 
     <?php echo $_COOKIE["email"]; ?>
