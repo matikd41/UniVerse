@@ -17,22 +17,15 @@ Who We Are
 
 UniVerse User Manual
 Table of Contents
-1. Introduction
-2. Creating Your Account
-3. Logging In
-4. Setting Up Your Profile
-5. Discussion Posts
-6. Joining Groups
-7. Messaging
-8. Notifications
-9. Managing Your Privacy
-10. Troubleshooting
-11. Contacting Support
-12. Using the Career/Internships Page
-13. Rating and Reviewing Professors
 
+1. Creating Your Account/Logging In
+2. Setting Up Your Profile
+3. Discussion Posts
+4. Using the Career/Internships Page
+5. Rating and Reviewing Professors
+6. Using the Career/Internships Page
 
-1. Introduction
+Introduction
 Welcome to UniVerse - your all-in-one platform for connecting with classmates, joining campus groups, exploring career opportunities, and sharing your university experience.
 
 2. Creating Your Account/Logging In
@@ -55,7 +48,6 @@ Step 4: Like, comment, or share posts.
 5. Using the Career/Internships Page
 Step 1: Go to 'Careers'.
 Step 2: View job details and apply online.
-
 
 6. Rating and Reviewing Professors
 Step 1: Go to 'Rate My Professor'.
