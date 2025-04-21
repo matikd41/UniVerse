@@ -1,3 +1,12 @@
+<?php 
+
+if(!isset($_COOKIE["user_id"])) {//if user is not logged in, redirect to login
+	header("Location: Signup.html");
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
