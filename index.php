@@ -1,8 +1,14 @@
 <?php 
 
+require_once "database.php";
+ob_end_clean();
+
 if(!isset($_COOKIE["user_id"])) {//if user is not logged in, redirect to login
 	header("Location: Signup.html");
 }
+
+$sql = "SELECT * FROM post ORDER BY post_id DESC";
+$result = $connection->query($sql);
 
 ?>
 
@@ -94,6 +100,13 @@ if(!isset($_COOKIE["user_id"])) {//if user is not logged in, redirect to login
       color: #777;
       margin-top: 10px;
     }
+    .author a {
+	color: #777;
+	text-decoration: none;
+    }
+    .author a:hover {
+	text-decoration: underline;
+    }
 
     .actions {
       margin-top: 10px;
@@ -134,8 +147,16 @@ if(!isset($_COOKIE["user_id"])) {//if user is not logged in, redirect to login
     <p>Connecting students to opportunities, one step at a time.</p>
   </div>
 
-  <div class="discussion-section" id="discussionBoard">
+  <!--div class="discussion-section" id="discussionBoard">
     <!-- Fake posts will be injected here -->
+
+  <div class="discussion-section">
+	<?php while($row = $result->fetch_assoc()) {//while loop to obtain posts from database ?>
+	    <div class="discussion-post">
+		<?php echo $row["post"] ?>
+		<div class="author">- <a href="profile.php?id=<?php echo$row["user_id"] ?>"><?php echo $row["name"] ?></a></div>
+	    </div>
+	<?php } ?>
   </div>
 
   <script>
